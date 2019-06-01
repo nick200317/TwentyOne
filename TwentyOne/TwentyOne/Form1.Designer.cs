@@ -34,13 +34,15 @@
             this.btn_Start = new System.Windows.Forms.Button();
             this.btn_Give = new System.Windows.Forms.Button();
             this.btn_End = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbl_1
             // 
             this.lbl_1.AutoSize = true;
             this.lbl_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lbl_1.Location = new System.Drawing.Point(8, 225);
+            this.lbl_1.Location = new System.Drawing.Point(8, 242);
             this.lbl_1.Name = "lbl_1";
             this.lbl_1.Size = new System.Drawing.Size(115, 24);
             this.lbl_1.TabIndex = 0;
@@ -59,7 +61,7 @@
             // btn_Start
             // 
             this.btn_Start.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_Start.Location = new System.Drawing.Point(12, 170);
+            this.btn_Start.Location = new System.Drawing.Point(25, 187);
             this.btn_Start.Name = "btn_Start";
             this.btn_Start.Size = new System.Drawing.Size(111, 52);
             this.btn_Start.TabIndex = 2;
@@ -69,29 +71,54 @@
             // 
             // btn_Give
             // 
+            this.btn_Give.Enabled = false;
             this.btn_Give.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_Give.Location = new System.Drawing.Point(129, 170);
+            this.btn_Give.Location = new System.Drawing.Point(159, 187);
             this.btn_Give.Name = "btn_Give";
             this.btn_Give.Size = new System.Drawing.Size(121, 51);
             this.btn_Give.TabIndex = 3;
             this.btn_Give.Text = "Попросить ещё";
             this.btn_Give.UseVisualStyleBackColor = true;
+            this.btn_Give.Click += new System.EventHandler(this.btn_Give_Click);
             // 
             // btn_End
             // 
+            this.btn_End.Enabled = false;
             this.btn_End.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btn_End.Location = new System.Drawing.Point(256, 170);
+            this.btn_End.Location = new System.Drawing.Point(303, 188);
             this.btn_End.Name = "btn_End";
             this.btn_End.Size = new System.Drawing.Size(113, 50);
             this.btn_End.TabIndex = 4;
             this.btn_End.Text = "Закончить";
             this.btn_End.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(5, 390);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(118, 24);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Ваши очки:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(8, 160);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(187, 24);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Очки противника:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(383, 418);
+            this.ClientSize = new System.Drawing.Size(437, 421);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_End);
             this.Controls.Add(this.btn_Give);
             this.Controls.Add(this.btn_Start);
@@ -115,6 +142,8 @@
         private System.Windows.Forms.Button btn_Start;
         private System.Windows.Forms.Button btn_Give;
         private System.Windows.Forms.Button btn_End;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
 
