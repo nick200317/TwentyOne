@@ -13,8 +13,10 @@ namespace TwentyOne
     public partial class Form1 : Form
     {
         Random rnd = new Random();
-        List<string> list = new List<string>(); //Списко для изображения карт
-        List<string> list2 = new List<string>(); 
+        List<string> list = new List<string>(); //Список для изображения карт
+        List<string> list2 = new List<string>(); //Список для сравнения с первым списком, чтоюы понять, какое кол-во очков начислять
+        List<string> list3 = new List<string>();
+        List<PictureBox> mas = new List<PictureBox>();
         int res;
         int x = 25;
         int y = 50;
@@ -24,6 +26,7 @@ namespace TwentyOne
         int count = 0;
         bool check = false;
         string str = "";
+        int col = 1;
 
         public Form1()
         {
@@ -122,7 +125,11 @@ namespace TwentyOne
 
             for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < 2; j++)
+                giveCard();
+                giveCoinsYour();
+                giveCardOp();
+                giveCoinsOp();
+                /*for (int j = 0; j < 2; j++)
                 {
                     giveCard();
                     if (i == 0) giveCoinsOp();
@@ -130,11 +137,12 @@ namespace TwentyOne
                 }
 
                 y = 275;
-                x = 25;
+                x = 25;*/
             }
-            x = 125;
+            //x = 125;
             btn_Give.Enabled = true;
             btn_End.Enabled = true;
+            checkWin();
         }
 
         private void btn_Give_Click(object sender, EventArgs e)
@@ -143,15 +151,31 @@ namespace TwentyOne
             {
                 giveCard();
                 giveCoinsYour();
+                if (check == false)
+                {
+                    if (countOp < 21)
+                    {
+                        res = rnd.Next(1, 100);
+                        if (res >= 1 && res <= 50)
+                        {
+                            giveCardOp();
+                            giveCoinsOp();
+                        }
+                        else { check = true; MessageBox.Show("Ваш противник закончил с взятием карт!"); }
+                    }
+                    else { check = true; MessageBox.Show("Ваш противник закончил с взятием карт!"); }
+
+                }
             }
+            checkWin();
 
         }
-
+        //Выдаёт карту ВАМ
         private void giveCard()
         {
             res = rnd.Next(list.Count);
             PictureBox pic2 = new PictureBox();
-            pic2.Location = new Point(x, y);
+            pic2.Location = new Point(x2, y2);
             pic2.BorderStyle = BorderStyle.FixedSingle;
             pic2.Size = new Size(50, 100);
             pic2.BackColor = SystemColors.Control;
@@ -161,13 +185,16 @@ namespace TwentyOne
             Controls.Add(pic2);
             str = list[res];
             list.RemoveAt(res);
-            x += 50;
+            x2 += 50;
         }
 
+        //Выдаёт карту ПРОТИВНИКУ
         private void giveCardOp()
         {
             res = rnd.Next(list.Count);
             PictureBox pic2 = new PictureBox();
+            pic2.Name = "picOp" + col.ToString();
+            col++;
             pic2.Location = new Point(x, y);
             pic2.BorderStyle = BorderStyle.FixedSingle;
             pic2.Size = new Size(50, 100);
@@ -177,10 +204,13 @@ namespace TwentyOne
             pic2.Load("C:\\Users\\nikpl\\Desktop\\для игры\\двадцать одно\\rubaska.jpg");
             Controls.Add(pic2);
             str = list[res];
+            list3.Add(list[res]);
             list.RemoveAt(res);
             x += 50;
+            mas.Add(pic2);
+            
         }
-
+        //Зачисляет очки ВАМ
         private void giveCoinsYour()
         {
             for (int i = 0; i < list2.Count; i++)
@@ -202,6 +232,7 @@ namespace TwentyOne
 
             label1.Text = "Ваши очки: " + count.ToString();
         }
+        //Зачисляет очки ПРОТИВНИКУ
         private void giveCoinsOp()
         {
             for (int i = 0; i < list2.Count; i++)
@@ -222,6 +253,17 @@ namespace TwentyOne
             }
 
             label2.Text = "Очки противника: " + countOp.ToString();
+        }
+
+        private void checkWin()
+        {
+            if (count > 21 || countOp > 21)
+            {
+                if (count > countOp) MessageBox.Show("Перебор, Вы проиграли!");
+                else if (count < countOp) MessageBox.Show("Перебор, Вы выиграли!");
+                else MessageBox.Show("Перебор, Ничья!");
+                
+            }
         }
     }
 }
