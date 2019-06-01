@@ -48,7 +48,26 @@ namespace TwentyOne
             list.Add("C:\\Users\\nikpl\\Desktop\\для игры\\двадцать одно\\9tref.png");
             list.Add("C:\\Users\\nikpl\\Desktop\\для игры\\двадцать одно\\9bubi.png");
             list.Add("C:\\Users\\nikpl\\Desktop\\для игры\\двадцать одно\\9chirva.png");
-
+            list.Add("C:\\Users\\nikpl\\Desktop\\для игры\\двадцать одно\\10vini.png");
+            list.Add("C:\\Users\\nikpl\\Desktop\\для игры\\двадцать одно\\10tref.png");
+            list.Add("C:\\Users\\nikpl\\Desktop\\для игры\\двадцать одно\\10bubi.png");
+            list.Add("C:\\Users\\nikpl\\Desktop\\для игры\\двадцать одно\\10chirva.png");
+            list.Add("C:\\Users\\nikpl\\Desktop\\для игры\\двадцать одно\\Valetvini.png");
+            list.Add("C:\\Users\\nikpl\\Desktop\\для игры\\двадцать одно\\Valettref.png");
+            list.Add("C:\\Users\\nikpl\\Desktop\\для игры\\двадцать одно\\Valetbubi.png");
+            list.Add("C:\\Users\\nikpl\\Desktop\\для игры\\двадцать одно\\Valetchirva.png");
+            list.Add("C:\\Users\\nikpl\\Desktop\\для игры\\двадцать одно\\Damavini.png");
+            list.Add("C:\\Users\\nikpl\\Desktop\\для игры\\двадцать одно\\Damatref.png");
+            list.Add("C:\\Users\\nikpl\\Desktop\\для игры\\двадцать одно\\Damabubi.png");
+            list.Add("C:\\Users\\nikpl\\Desktop\\для игры\\двадцать одно\\Damachirva.png");
+            list.Add("C:\\Users\\nikpl\\Desktop\\для игры\\двадцать одно\\Kingvini.png");
+            list.Add("C:\\Users\\nikpl\\Desktop\\для игры\\двадцать одно\\Kingtref.png");
+            list.Add("C:\\Users\\nikpl\\Desktop\\для игры\\двадцать одно\\Kingbubi.png");
+            list.Add("C:\\Users\\nikpl\\Desktop\\для игры\\двадцать одно\\Kingchirva.png");
+            list.Add("C:\\Users\\nikpl\\Desktop\\для игры\\двадцать одно\\Avini.png");
+            list.Add("C:\\Users\\nikpl\\Desktop\\для игры\\двадцать одно\\Atref.png");
+            list.Add("C:\\Users\\nikpl\\Desktop\\для игры\\двадцать одно\\Abubi.png");
+            list.Add("C:\\Users\\nikpl\\Desktop\\для игры\\двадцать одно\\Achirva.png");
         }
 
         //Метод для добавлении первых двух случайных карт
