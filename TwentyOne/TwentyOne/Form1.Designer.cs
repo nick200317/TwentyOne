@@ -91,6 +91,7 @@
             this.btn_End.TabIndex = 4;
             this.btn_End.Text = "Закончить";
             this.btn_End.UseVisualStyleBackColor = true;
+            this.btn_End.Click += new System.EventHandler(this.btn_End_Click);
             // 
             // label1
             // 
@@ -116,7 +117,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(437, 421);
+            this.ClientSize = new System.Drawing.Size(444, 421);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_End);

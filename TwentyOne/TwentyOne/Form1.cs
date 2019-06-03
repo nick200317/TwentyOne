@@ -17,28 +17,24 @@ namespace TwentyOne
         List<string> list2 = new List<string>(); //Список для сравнения с первым списком, чтоюы понять, какое кол-во очков начислять
         List<string> list3 = new List<string>();
         List<PictureBox> mas = new List<PictureBox>();
-        int res;
-        int x = 25;
-        int y = 50;
-        int x2 = 25;
-        int y2 = 275;
-        int countOp = 0;
-        int count = 0;
+        int res; int x = 25; int y = 50; int x2 = 25; int y2 = 275; int countOp = 0; int count = 0; int col = 1;
         bool check = false;
         string str = "";
-        int col = 1;
+        bool lose = false;
+        
 
         public Form1()
         {
             InitializeComponent();
             GenerateImage();
             label1.Text += count.ToString();
-            label2.Text += countOp.ToString();
+            label2.Text += "?";
         }
 
         private void btn_Start_Click(object sender, EventArgs e)
         {
             Start();
+            checkLose();
         }
 
         //Заливаем в наш список пути с изображениями карт
@@ -129,20 +125,9 @@ namespace TwentyOne
                 giveCoinsYour();
                 giveCardOp();
                 giveCoinsOp();
-                /*for (int j = 0; j < 2; j++)
-                {
-                    giveCard();
-                    if (i == 0) giveCoinsOp();
-                    else giveCoinsYour();
-                }
-
-                y = 275;
-                x = 25;*/
             }
-            //x = 125;
             btn_Give.Enabled = true;
             btn_End.Enabled = true;
-            checkWin();
         }
 
         private void btn_Give_Click(object sender, EventArgs e)
@@ -151,23 +136,29 @@ namespace TwentyOne
             {
                 giveCard();
                 giveCoinsYour();
-                if (check == false)
+                checkLose();
+                if (lose == false)
                 {
-                    if (countOp < 21)
+                    if (check == false)
                     {
-                        res = rnd.Next(1, 100);
-                        if (res >= 1 && res <= 50)
+                        if (countOp < 21)
                         {
-                            giveCardOp();
-                            giveCoinsOp();
+                            res = rnd.Next(1, 100);
+                            if (res >= 1 && res <= 50)
+                            {
+                                giveCardOp();
+                                giveCoinsOp();
+
+                            }
+                            else { check = true; MessageBox.Show("Ваш противник закончил с взятием карт!"); }
                         }
                         else { check = true; MessageBox.Show("Ваш противник закончил с взятием карт!"); }
+                        checkLose();
                     }
-                    else { check = true; MessageBox.Show("Ваш противник закончил с взятием карт!"); }
-
                 }
+                
             }
-            checkWin();
+            
 
         }
         //Выдаёт карту ВАМ
@@ -222,9 +213,9 @@ namespace TwentyOne
                     else if (i >= 8 && i <= 11) count += 8;
                     else if (i >= 12 && i <= 15) count += 9;
                     else if (i >= 16 && i <= 19) count += 10;
-                    else if (i >= 20 && i <= 23) count += 10;
-                    else if (i >= 24 && i <= 27) count += 10;
-                    else if (i >= 28 && i <= 31) count += 10;
+                    else if (i >= 20 && i <= 23) count += 2;
+                    else if (i >= 24 && i <= 27) count += 3;
+                    else if (i >= 28 && i <= 31) count += 4;
                     else if (i >= 32 && i <= 35) count += 11;
                 }
                     
@@ -244,17 +235,18 @@ namespace TwentyOne
                     else if (i >= 8 && i <= 11) { countOp += 8; break; }
                     else if (i >= 12 && i <= 15) { countOp += 9; break; }
                     else if (i >= 16 && i <= 19) { countOp += 10; break; }
-                    else if (i >= 20 && i <= 23) { countOp += 10; break; }
-                    else if (i >= 24 && i <= 27) { countOp += 10; break; }
-                    else if (i >= 28 && i <= 31) { countOp += 10; break; }
+                    else if (i >= 20 && i <= 23) { countOp += 2; break; }
+                    else if (i >= 24 && i <= 27) { countOp += 3; break; }
+                    else if (i >= 28 && i <= 31) { countOp += 4; break; }
                     else if (i >= 32 && i <= 35) { countOp += 11; break; }
                 }
                     
             }
 
-            label2.Text = "Очки противника: " + countOp.ToString();
+            
         }
 
+        //Метод для проверки на выигрыш
         private void checkWin()
         {
             if (count > 21 || countOp > 21)
@@ -264,6 +256,47 @@ namespace TwentyOne
                 else MessageBox.Show("Перебор, Ничья!");
                 
             }
+            else if (count == 21) MessageBox.Show("Вы выиграли!");
+            else if (countOp == 21) MessageBox.Show("Вы проиграли!");
+            else if (count > countOp) MessageBox.Show("Вы выиграли!");
+            else if (count < countOp) MessageBox.Show("Вы проиграли!");
+            else if (count == countOp) MessageBox.Show("Ничья!");
+            btn_End.Enabled = false;
+            btn_Give.Enabled = false;
+        }
+
+        private void btn_End_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < list3.Count; i++)
+            {
+                mas[i].Load(list3[i]);
+            }
+            checkWin();
+            label2.Text = "Очки противника: " + countOp.ToString();
+        }
+
+        private void checkLose()
+        {
+            if (count > 21 || countOp > 21)
+            {
+                if (count > countOp) MessageBox.Show("Вы проиграли!");
+                else if (count < countOp) MessageBox.Show("Вы выиграли!");
+                else if (count == countOp) MessageBox.Show("Ничья!");
+                for (int i = 0; i < list3.Count; i++)
+                {
+                    mas[i].Load(list3[i]);
+                }
+                btn_End.Enabled = false;
+                btn_Give.Enabled = false;
+                lose = true;
+                label2.Text = "Очки противника: " + countOp.ToString();
+            }
+                
+        }
+
+        private void btn_Restart_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }
