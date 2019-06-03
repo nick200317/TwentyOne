@@ -117,7 +117,6 @@ namespace TwentyOne
         //Метод для добавлении первых двух случайных карт
         private void Start()
         {
-            btn_Start.Enabled = false;
 
             for (int i = 0; i < 2; i++)
             {
@@ -294,9 +293,17 @@ namespace TwentyOne
                 
         }
 
-        private void btn_Restart_Click(object sender, EventArgs e)
+
+        private void Form1_Load(object sender, EventArgs e)
         {
-           
+            Start();
+            checkLose();
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Form f1 = Application.OpenForms[0];
+            f1.Show();
         }
     }
 }
